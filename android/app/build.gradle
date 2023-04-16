@@ -74,9 +74,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.timebank"
+    namespace "com.timeaccount"
     defaultConfig {
-        applicationId "com.timebank"
+        applicationId "com.timeaccount"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
