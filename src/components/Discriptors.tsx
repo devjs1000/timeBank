@@ -10,9 +10,11 @@ const Discriptors = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>{title}</Text>
+      <View style={{
+        width:'100%'
+      }} >
         <Text style={styles.description}>{description}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
     </View>
   );
@@ -29,17 +31,16 @@ const styles = StyleSheet.create({
     height: 200,
     justifyContent: 'center',
   },
-  title: {
+  description: {
     color: color2,
     paddingHorizontal: 4,
     fontSize: 20,
     textAlign: 'center',
   },
-  description: {
+  title: {
     color: primary,
     paddingHorizontal: 4,
     fontSize: 40,
-    width: 300,
     textAlign: 'center',
     backgroundColor: 'rgba(0,0,0,.3)',
   },

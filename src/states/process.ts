@@ -4,8 +4,8 @@ import { multiUpdateDb, updateDb } from "../helpers/db";
 const initialState: ProcessType = {
     hasStarted: false,
     time: 0,
-    title: "START",
-    description: 'I Will!',
+    title: "Time Bank!",
+    description: 'Your time is deducting every second from your time bank spend it wisely',
     modalStatus: false,
     startTime: 0,
     id: ''
