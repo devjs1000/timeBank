@@ -6,12 +6,11 @@ import {formatTime, timeStampToTime} from '../helpers/time';
 import {color2, secondary} from '../constants/theme';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
-import {deleteProcess} from '../states/history';
+import {deleteProcess, setEdit} from '../states/history';
 
 const HistoryCard = ({data}: {data: ProcessType}) => {
   const duration = data.time;
-  const {sec, min, hr} = timeStampToTime(duration);
-  const formattedDuration = formatTime(sec, min, hr);
+  timeStampToTime(duration);
   const formattedDate = moment(data.startTime).format('DD/MM/YYYY');
   const formattedTime = moment(data.startTime).format('hh:mm');
   const dispatch = useDispatch();
@@ -20,6 +19,10 @@ const HistoryCard = ({data}: {data: ProcessType}) => {
   };
   const handleDelete = () => {
     dispatch(deleteProcess(data.id));
+  };
+
+  const handleEdit = () => {
+    dispatch(setEdit(data));
   };
   return (
     <Card style={styles.container}>
@@ -36,7 +39,9 @@ const HistoryCard = ({data}: {data: ProcessType}) => {
           </Badge>
         </View>
         <View style={styles.flexContainer}>
-          <Text variant="bodyMedium" style={styles.description} >{data.description}</Text>
+          <Text variant="bodyMedium" style={styles.description}>
+            {data.description}
+          </Text>
           <Badge style={[styles.time, styles.duration]}>
             {`${duration} s`}
           </Badge>
@@ -48,7 +53,7 @@ const HistoryCard = ({data}: {data: ProcessType}) => {
           mode="contained-tonal"
           onPress={handleDelete}
         />
-        <IconButton icon={'pen'} mode="contained-tonal" />
+        <IconButton icon={'pen'} mode="contained-tonal" onPress={handleEdit} />
         <Button
           icon={'play'}
           mode="contained-tonal"
@@ -81,10 +86,10 @@ const styles = StyleSheet.create({
 
   title: {
     flexGrow: 1,
-    fontWeight:'900'
+    fontWeight: '900',
     // color:'white'
   },
-  description:{
+  description: {
     // color:'white'
   },
   flexContainer: {

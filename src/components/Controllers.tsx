@@ -28,7 +28,6 @@ const Controllers = () => {
         icon={icon}
         mode="contained"
         onPress={handleTask}
-        textColor={dark900}
         style={styles.button}>
         {title}
       </Button>

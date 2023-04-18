@@ -1,16 +1,10 @@
 import {StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import {
-  Button,
-  Dialog,
-  Portal,
-  Text,
-  TextInput,
-} from 'react-native-paper';
+import {Button, Dialog, Portal, Text, TextInput} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 import {closeModal, start} from '../states/process';
-import {primary,  secondary} from '../constants/theme';
+import {color2, primary, secondary} from '../constants/theme';
 
 const ModalForm = () => {
   const [form, setForm] = useState<FormType>({
@@ -68,8 +62,7 @@ const ModalForm = () => {
               marginTop: 10,
             }}
             icon={'play'}
-            onPress={handleStartTask}
-            textColor={secondary}>
+            onPress={handleStartTask}>
             Start
           </Button>
         </Dialog.Content>
@@ -90,10 +83,12 @@ const styles = StyleSheet.create({
     backgroundColor: secondary,
   },
   inputStyle: {
-    backgroundColor: 'rgba(0,0,0,.1)',
+    backgroundColor: color2,
+    color: 'white',
     margin: 2,
+    borderRadius: 3,
   },
   heading: {
-    color: primary ,
+    color: primary,
   },
 });

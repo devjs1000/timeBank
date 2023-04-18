@@ -1,20 +1,21 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Portal, Dialog, Button, TextInput} from 'react-native-paper';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 import {TimePicker} from 'react-native-paper-dates';
 import {PossibleClockTypes} from 'react-native-paper-dates/lib/typescript/Time/timeUtils';
+import {color2, dark900, primary, secondary} from '../constants/theme';
+import {cancelEdit} from '../states/history';
 
 const EditHistoryForm = () => {
   const {showEditor, edit} = useSelector((state: RootState) => state.history);
+  const dispatch = useDispatch();
   const handleCancelEdit = () => {
-
+    dispatch(cancelEdit());
   };
 
-  const handleSaveEdit = () => {
-
-  };
+  const handleSaveEdit = () => {};
 
   const handleTime = (time: any) => {
     console.log(time);
@@ -24,12 +25,23 @@ const EditHistoryForm = () => {
   };
   return (
     <Portal>
-      <Dialog visible={showEditor} onDismiss={handleCancelEdit}>
-        <Dialog.Title>Edit</Dialog.Title>
+      <Dialog
+        visible={showEditor}
+        onDismiss={handleCancelEdit}
+        style={styles.container}>
+        <Dialog.Title style={styles.heading}>Edit</Dialog.Title>
         <Dialog.Content>
-          <TextInput label="Title" value={edit?.title} />
-          <TextInput label="Description" value={edit?.description} />
-          <View style={{marginVertical: 10}} />
+          <TextInput
+            label="Title"
+            value={edit?.title}
+            style={styles.inputStyle}
+          />
+          <TextInput
+            label="Description"
+            value={edit?.description}
+            style={styles.inputStyle}
+          />
+          {/* <View style={{marginVertical: 10}} />
           <TimePicker
             inputType={'keyboard'}
             focused={'hours'}
@@ -39,13 +51,23 @@ const EditHistoryForm = () => {
             onChange={handleTime}
             inputFontSize={26}
             use24HourClock={true}
-          />
+          /> */}
           <View style={{marginVertical: 10}} />
 
-          <TextInput label="Duration" value={(edit?.time || '') + ''} />
+          <TextInput
+            inputMode="numeric"
+            label="Duration"
+            value={(edit?.time || '') + ''}
+            style={styles.inputStyle}
+          />
         </Dialog.Content>
         <Dialog.Actions>
-          <Button  onPress={handleSaveEdit}>Save</Button>
+          <Button
+            mode="contained"
+            onPress={handleSaveEdit}
+            style={styles.button}>
+            Save
+          </Button>
         </Dialog.Actions>
       </Dialog>
     </Portal>
@@ -54,4 +76,21 @@ const EditHistoryForm = () => {
 
 export default EditHistoryForm;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: secondary,
+  },
+
+  inputStyle: {
+    backgroundColor: color2,
+    color: 'white',
+    margin: 2,
+    borderRadius: 3,
+  },
+  heading: {
+    color: primary,
+  },
+  button: {
+    paddingHorizontal: 10,
+  },
+});

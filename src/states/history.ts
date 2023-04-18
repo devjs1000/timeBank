@@ -57,18 +57,19 @@ export const historySlice = createSlice({
             updateItemById('history', id, updated)
         },
         setEdit(state, action) {
+            state.showEditor = true;
             state.edit = action.payload
         },
-        setShowEditor(state, action) {
-            state.edit = action.payload;
+        setShowEditor(state) {
             state.showEditor = true;
         },
         cancelEdit(state) {
             state.edit = null;
             state.showEditor = false;
         },
+        
     }
 })
 
-export const { addHistory, clearHistory, deleteProcess, updateHistory, updateProcess } = historySlice.actions;
+export const { addHistory, clearHistory, deleteProcess, updateHistory, updateProcess, cancelEdit, setEdit, setShowEditor } = historySlice.actions;
 export default historySlice.reducer;
