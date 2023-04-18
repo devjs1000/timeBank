@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Text} from 'react-native-paper';
-import {color1, color2} from '../constants/theme';
+import {color2, primary} from '../constants/theme';
 import {useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   description: {
-    color: color1,
+    color: primary,
     paddingHorizontal: 4,
     fontSize: 40,
     width: 300,

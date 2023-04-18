@@ -4,7 +4,7 @@ import {
   Provider as PaperProvider,
 } from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {primary, secondary} from '../constants/theme';
+import {primary, secondary, color1, color2, dark900} from '../constants/theme';
 
 const theme = {
   ...DefaultTheme,
@@ -12,6 +12,9 @@ const theme = {
     ...DefaultTheme.colors,
     primary: primary,
     secondary: secondary,
+    color1,
+    color2,
+    dark900,
   },
 };
 

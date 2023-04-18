@@ -3,7 +3,7 @@ import React from 'react';
 import {Badge, Button, Card, IconButton, Text} from 'react-native-paper';
 import {ProcessType, start} from '../states/process';
 import {formatTime, timeStampToTime} from '../helpers/time';
-import {secondary} from '../constants/theme';
+import {color2, secondary} from '../constants/theme';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
 import {deleteProcess} from '../states/history';
@@ -23,7 +23,6 @@ const HistoryCard = ({data}: {data: ProcessType}) => {
   };
   return (
     <Card style={styles.container}>
-      <Card.Title title={data.id} />
       <Card.Content>
         <View style={styles.flexContainer}>
           <Text variant="titleLarge" style={styles.title}>
@@ -37,9 +36,9 @@ const HistoryCard = ({data}: {data: ProcessType}) => {
           </Badge>
         </View>
         <View style={styles.flexContainer}>
-          <Text variant="bodyMedium">{data.description}</Text>
+          <Text variant="bodyMedium" style={styles.description} >{data.description}</Text>
           <Badge style={[styles.time, styles.duration]}>
-            {formattedDuration}
+            {`${duration} s`}
           </Badge>
         </View>
       </Card.Content>
@@ -49,7 +48,7 @@ const HistoryCard = ({data}: {data: ProcessType}) => {
           mode="contained-tonal"
           onPress={handleDelete}
         />
-        {/* <IconButton icon={'pen'} mode="contained-tonal" /> */}
+        <IconButton icon={'pen'} mode="contained-tonal" />
         <Button
           icon={'play'}
           mode="contained-tonal"
@@ -66,6 +65,7 @@ export default HistoryCard;
 const styles = StyleSheet.create({
   container: {
     margin: 10,
+    backgroundColor: 'white',
   },
   time: {
     minWidth: 50,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   duration: {
-    backgroundColor: secondary,
+    backgroundColor: color2,
   },
   formattedTime: {
     backgroundColor: secondary,
@@ -81,6 +81,11 @@ const styles = StyleSheet.create({
 
   title: {
     flexGrow: 1,
+    fontWeight:'900'
+    // color:'white'
+  },
+  description:{
+    // color:'white'
   },
   flexContainer: {
     flexDirection: 'row',

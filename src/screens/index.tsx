@@ -4,9 +4,12 @@ import History from './History';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {dark900, primary, secondary} from '../constants/theme';
+import {color2, dark900, primary, secondary} from '../constants/theme';
 import Navbar from '../components/Navbar';
 import useProcess from '../hooks/useProcess';
+import Settings from './Settings';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import ThemeButton from '../components/Buttons/ThemeButton';
 
 const Tab = createBottomTabNavigator();
 const Screen = () => {
@@ -17,8 +20,8 @@ const Screen = () => {
         initialRouteName="Home"
         detachInactiveScreens={true}
         screenOptions={{
-          header: ({route}) => <Navbar title={route.name} />,
-          tabBarActiveTintColor: primary,
+          header: () => <Navbar />,
+          tabBarActiveTintColor: color2,
           tabBarInactiveTintColor: 'rgba(255,255,255,.2)',
           tabBarShowLabel: false,
           tabBarStyle: {
@@ -48,6 +51,18 @@ const Screen = () => {
                 size={size}
               />
             ),
+          }}
+        />
+        <Tab.Screen
+          name="Setting"
+          component={Settings}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <Ionicons name="settings" color={color} size={size} />
+            ),
+            header: ({}) => {
+              return <Navbar left={<ThemeButton />} />;
+            },
           }}
         />
       </Tab.Navigator>

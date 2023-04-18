@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Appbar, Button} from 'react-native-paper';
-import {dark900, primary, secondary} from '../constants/theme';
+import {Button} from 'react-native-paper';
+import {dark900, secondary} from '../constants/theme';
 
-const Navbar = ({title}: NavbarProps) => {
+const Navbar = ({left}: NavbarProps) => {
   const totalSecondsInDay = 60 * 60 * 24;
 
   const [time, setTime] = React.useState(totalSecondsInDay);
@@ -22,6 +22,7 @@ const Navbar = ({title}: NavbarProps) => {
 
   return (
     <View style={styles.container}>
+      {false ? left : <View />}
       <Button icon={'piggy-bank'} mode="contained" buttonColor={secondary}>
         {time}
       </Button>
@@ -32,7 +33,7 @@ const Navbar = ({title}: NavbarProps) => {
 export default Navbar;
 
 interface NavbarProps {
-  title: string;
+  left?: React.ReactNode;
 }
 
 const styles = StyleSheet.create({
@@ -40,8 +41,9 @@ const styles = StyleSheet.create({
     backgroundColor: dark900,
     padding: 4,
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   appName: {
     color: 'white',
