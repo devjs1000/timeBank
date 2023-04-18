@@ -4,7 +4,7 @@ import History from './History';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {primary, secondary} from '../constants/theme';
+import {dark900, primary, secondary} from '../constants/theme';
 import Navbar from '../components/Navbar';
 import useProcess from '../hooks/useProcess';
 
@@ -25,7 +25,7 @@ const Screen = () => {
             backgroundColor: secondary,
             elevation: 9,
             borderTopWidth: 1,
-            borderTopColor: 'black',
+            borderTopColor: dark900,
           },
         }}>
         <Tab.Screen

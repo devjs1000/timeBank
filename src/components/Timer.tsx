@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {secondary, shadows} from '../constants/theme';
+import {dark900, secondary, shadows} from '../constants/theme';
 import Controllers from './Controllers';
 import {Text} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     position: 'relative',
     borderWidth: 4,
-    borderColor: 'black',
+    borderColor: dark900,
     ...shadows,
   },
 

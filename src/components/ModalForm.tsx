@@ -10,7 +10,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 import {closeModal, start} from '../states/process';
-import {pink, secondary} from '../constants/theme';
+import {color1,  secondary} from '../constants/theme';
 
 const ModalForm = () => {
   const [form, setForm] = useState<FormType>({
@@ -94,6 +94,6 @@ const styles = StyleSheet.create({
     margin: 2,
   },
   heading: {
-    color: pink,
+    color: color1 ,
   },
 });

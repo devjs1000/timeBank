@@ -11,7 +11,7 @@ const initialState: ProcessType = {
     id: ''
 }
 
-export const stop = createAsyncThunk('process/stop', async (payload: ProcessType) => {
+export const stop:any = createAsyncThunk('process/stop', async (payload: ProcessType) => {
     try {
         await multiUpdateDb([
             {

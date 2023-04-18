@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 import {ProcessType} from '../states/process';
 import HistoryCard from './HistoryCard';
+import { dark900 } from '../constants/theme';
 
 const TodayProcess = () => {
   const {data: historyData} = useSelector((state: RootState) => state.history);
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     minHeight: 300,
-    backgroundColor:'black',
+    backgroundColor:dark900,
     marginTop: 20,
   },
 });

@@ -3,8 +3,9 @@ import React from 'react';
 import {Button} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../states/store';
-import {openModal, stop} from '../states/process';
-import {shadows} from '../constants/theme';
+import {ProcessType, openModal, stop} from '../states/process';
+import {dark900, shadows} from '../constants/theme';
+import {Action, AsyncThunk, AsyncThunkAction} from '@reduxjs/toolkit';
 
 const Controllers = () => {
   const process = useSelector((state: RootState) => state.process);
@@ -27,7 +28,7 @@ const Controllers = () => {
         icon={icon}
         mode="contained"
         onPress={handleTask}
-        textColor="black"
+        textColor={dark900}
         style={styles.button}>
         {title}
       </Button>
@@ -40,7 +41,7 @@ export default Controllers;
 const styles = StyleSheet.create({
   button: {
     borderWidth: 4,
-    borderColor: 'black',
+    borderColor: dark900,
     ...shadows,
   },
 });

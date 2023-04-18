@@ -1,13 +1,13 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Text} from 'react-native-paper';
-import {lightPink, pink} from '../constants/theme';
+import {color1, color2} from '../constants/theme';
 import {useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 
 const Discriptors = () => {
   const {title, description} = useSelector((state: RootState) => state.process);
- 
+
   return (
     <View style={styles.container}>
       <View>
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: lightPink,
+    color: color2,
     paddingHorizontal: 4,
     fontSize: 20,
     textAlign: 'center',
   },
   description: {
-    color: pink,
+    color: color1,
     paddingHorizontal: 4,
     fontSize: 40,
     width: 300,

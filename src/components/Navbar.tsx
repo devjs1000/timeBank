@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Appbar, Button} from 'react-native-paper';
-import {primary, secondary} from '../constants/theme';
+import {dark900, primary, secondary} from '../constants/theme';
 
 const Navbar = ({title}: NavbarProps) => {
   const totalSecondsInDay = 60 * 60 * 24;
@@ -37,7 +37,7 @@ interface NavbarProps {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'black',
+    backgroundColor: dark900,
     padding: 4,
     display: 'flex',
     justifyContent: 'center',
