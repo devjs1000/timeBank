@@ -35,7 +35,8 @@ export const historySlice = createSlice({
         clearHistory(state) {
             state.data = []
         },
-        updateProcess(state, action) {
+        updateProcessHistory(state, action) {
+            console.log('updateProcess', action.payload)
             const { id, data } = action.payload;
             let updated = {}
             state.data = state.data.map((el: ProcessType) => {
@@ -46,12 +47,13 @@ export const historySlice = createSlice({
                     }
 
                     return {
-                        ...state,
+                        ...el,
                         ...data
                     }
                 }
                 return el
             })
+            console.log('updated', updated)
             state.showEditor = false;
             state.edit = null;
             updateItemById('history', id, updated)
@@ -71,5 +73,5 @@ export const historySlice = createSlice({
     }
 })
 
-export const { addHistory, clearHistory, deleteProcess, updateHistory, updateProcess, cancelEdit, setEdit, setShowEditor } = historySlice.actions;
+export const { addHistory, clearHistory, deleteProcess, updateHistory, updateProcessHistory, cancelEdit, setEdit, setShowEditor } = historySlice.actions;
 export default historySlice.reducer;

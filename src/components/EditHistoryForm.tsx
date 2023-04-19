@@ -1,28 +1,41 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Portal, Dialog, Button, TextInput} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../states/store';
 import {TimePicker} from 'react-native-paper-dates';
 import {PossibleClockTypes} from 'react-native-paper-dates/lib/typescript/Time/timeUtils';
 import {color2, dark900, primary, secondary} from '../constants/theme';
-import {cancelEdit} from '../states/history';
+import {cancelEdit, updateProcessHistory} from '../states/history';
 
 const EditHistoryForm = () => {
   const {showEditor, edit} = useSelector((state: RootState) => state.history);
   const dispatch = useDispatch();
+  const [form, setForm] = useState({
+    title: edit?.title,
+    description: edit?.description,
+    time: edit?.time,
+  });
+
   const handleCancelEdit = () => {
     dispatch(cancelEdit());
   };
 
-  const handleSaveEdit = () => {};
+  const handleSaveEdit = () => {
+    dispatch(updateProcessHistory({id: edit?.id, data: form}));
+  };
 
-  const handleTime = (time: any) => {
-    console.log(time);
+  const handleChange = (name: string) => (value: string) => {
+    setForm({...form, [name]: value});
   };
-  const handleFocus = (type: PossibleClockTypes) => {
-    console.log('focus', type);
-  };
+
+  useEffect(() => {
+    setForm({
+      title: edit?.title,
+      description: edit?.description,
+      time: edit?.time,
+    });
+  }, [edit]);
   return (
     <Portal>
       <Dialog
@@ -33,15 +46,18 @@ const EditHistoryForm = () => {
         <Dialog.Content>
           <TextInput
             label="Title"
-            value={edit?.title}
+            value={form?.title}
             style={styles.inputStyle}
+            onChangeText={handleChange('title')}
           />
           <TextInput
             label="Description"
-            value={edit?.description}
+            value={form?.description}
             style={styles.inputStyle}
+            onChangeText={handleChange('description')}
           />
-          {/* <View style={{marginVertical: 10}} />
+          {/* 
+          <View style={{marginVertical: 10}} />
           <TimePicker
             inputType={'keyboard'}
             focused={'hours'}
@@ -51,14 +67,15 @@ const EditHistoryForm = () => {
             onChange={handleTime}
             inputFontSize={26}
             use24HourClock={true}
-          /> */}
-          <View style={{marginVertical: 10}} />
+          />
+          */}
 
           <TextInput
             inputMode="numeric"
             label="Duration"
-            value={(edit?.time || '') + ''}
+            value={(form?.time || '') + ''}
             style={styles.inputStyle}
+            onChangeText={handleChange('time')}
           />
         </Dialog.Content>
         <Dialog.Actions>
