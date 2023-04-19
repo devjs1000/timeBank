@@ -3,7 +3,7 @@ import React from 'react';
 import {Badge, Button, Card, IconButton, Text} from 'react-native-paper';
 import {ProcessType, start} from '../states/process';
 import {formatTime, timeStampToTime} from '../helpers/time';
-import {color2, secondary} from '../constants/theme';
+import {color1, color2, primary, secondary} from '../constants/theme';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
 import {deleteProcess, setEdit} from '../states/history';
@@ -78,7 +78,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   duration: {
-    backgroundColor: color2,
+    backgroundColor: 'white',
+    color:primary,
+    borderWidth:1,
+    borderColor:primary
   },
   formattedTime: {
     backgroundColor: secondary,
