@@ -4,14 +4,14 @@ import { multiUpdateDb, updateDb } from "../helpers/db";
 const initialState: ProcessType = {
     hasStarted: false,
     time: 0,
-    title: "Time Bank!",
-    description: 'Your time is deducting every second from your time bank spend it wisely',
+    title: "Spend it Wisely!",
+    description: 'Your time is deducting every second.',
     modalStatus: false,
     startTime: 0,
     id: ''
 }
 
-export const stop:any = createAsyncThunk('process/stop', async (payload: ProcessType) => {
+export const stop: any = createAsyncThunk('process/stop', async (payload: ProcessType) => {
     try {
         await multiUpdateDb([
             {
