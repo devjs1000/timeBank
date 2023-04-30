@@ -53,7 +53,7 @@ const Screen = () => {
             ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="Setting"
           component={Settings}
           options={{
@@ -64,7 +64,7 @@ const Screen = () => {
               return <Navbar left={<ThemeButton />} />;
             },
           }}
-        />
+        /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
