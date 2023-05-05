@@ -12,7 +12,8 @@ interface HistoryState {
 const initialState: HistoryState = {
     data: [],
     showEditor: false,
-    edit: null
+    edit: null,
+
 }
 
 export const historySlice = createSlice({
@@ -69,7 +70,7 @@ export const historySlice = createSlice({
             state.edit = null;
             state.showEditor = false;
         },
-        
+
     }
 })
 

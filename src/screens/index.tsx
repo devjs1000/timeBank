@@ -9,7 +9,9 @@ import Navbar from '../components/Navbar';
 import useProcess from '../hooks/useProcess';
 import Settings from './Settings';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ThemeButton from '../components/Buttons/ThemeButton';
+import Account from './Account';
 
 const Tab = createBottomTabNavigator();
 const Screen = () => {
@@ -65,6 +67,19 @@ const Screen = () => {
             },
           }}
         /> */}
+
+        <Tab.Screen
+          name="Account"
+          component={Account}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <MaterialIcons name="account-circle" color={color} size={size} />
+            ),
+            header: ({}) => {
+              return <Navbar left={<ThemeButton />} />;
+            },
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
