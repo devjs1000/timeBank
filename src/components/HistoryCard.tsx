@@ -2,14 +2,14 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Badge, Button, Card, IconButton, Text} from 'react-native-paper';
 import {ProcessType, start} from '../states/process';
-import {formatTime, timeStampToTime} from '../helpers/time';
-import {color1, color2, primary, secondary} from '../constants/theme';
+import {timeStampToTime} from '../helpers/time';
+import {primary, secondary} from '../constants/theme';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
 import {deleteProcess, setEdit} from '../states/history';
 
 const HistoryCard = ({data}: {data: ProcessType}) => {
-  const duration = data.time;
+  const duration = parseInt('' + data.time / 1000);
   timeStampToTime(duration);
   const formattedDate = moment(data.startTime).format('DD/MM/YYYY');
   const formattedTime = moment(data.startTime).format('hh:mm');
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
   },
   duration: {
     backgroundColor: 'white',
-    color:primary,
-    borderWidth:1,
-    borderColor:primary
+    color: primary,
+    borderWidth: 1,
+    borderColor: primary,
   },
   formattedTime: {
     backgroundColor: secondary,
@@ -90,11 +90,8 @@ const styles = StyleSheet.create({
   title: {
     flexGrow: 1,
     fontWeight: '900',
-    // color:'white'
   },
-  description: {
-    // color:'white'
-  },
+  description: {},
   flexContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
