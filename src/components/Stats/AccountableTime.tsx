@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../states/store';
 import {ProcessType} from '../../states/process';
 import HistoryCard from '../HistoryCard';
+import { primary } from '../../constants/theme';
 
 const AccountableTime = () => {
   const timeData = useSelector((state: RootState) => state.history.data);
@@ -25,26 +26,15 @@ const AccountableTime = () => {
     <View style={styles.container}>
       <List.Section>
         <List.Accordion
+          titleStyle={styles.heading}
           style={styles.accordionHeading}
-          title={
-            <View style={{flexGrow: 1, width: 400}}>
-              <View style={styles.innerContainer}>
-                <Text style={styles.heading}>Accounted Time</Text>
-                <Button>({`${accountedSeconds}s`})</Button>
-              </View>
-              <ProgressBar
-                style={{
-                  width: 300,
-                }}
-                animatedValue={value}
-              />
-            </View>
-          }
+          title={`Accounted Time (${accountedSeconds})s`}
           left={props => <List.Icon {...props} icon="clock" />}>
           {todayData.map((data: ProcessType) => {
             return <HistoryCard data={data} />;
           })}
         </List.Accordion>
+        <ProgressBar animatedValue={value} />
       </List.Section>
     </View>
   );
@@ -58,14 +48,14 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 18,
-    fontWeight: '400',
-    color: 'white',
+    fontWeight: '600',
+    color: primary,
   },
   innerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: 300
+    width: '70%',
   },
   accordionHeading: {
     backgroundColor: '#000',

@@ -18,6 +18,7 @@
     "moment": "^2.29.4",
     "react": "18.2.0",
     "react-native": "0.71.6",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-paper": "^5.6.0",
@@ -25,6 +26,7 @@
     "react-native-reanimated": "^3.0.2",
     "react-native-safe-area-context": "^4.5.1",
     "react-native-screens": "^3.20.0",
+    "react-native-svg": "^13.9.0",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
     "shortid": "^2.2.16"

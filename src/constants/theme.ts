@@ -5,7 +5,7 @@ export const secondary = "#191825";
 export const color1 = '#E384FF'
 export const primary = '#865DFF'
 export const dark900='black'
-export const dark100=''
+export const dark100='#000'
 
 export const commonStyles = StyleSheet.create({
     shadows: {

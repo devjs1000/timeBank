@@ -5,12 +5,14 @@ import {Divider, Drawer, List} from 'react-native-paper';
 import BuyMeACoffee from '../components/Buttons/BuyMeACoffee';
 import ReportBug from '../components/Buttons/ReportBug';
 import AccountableTime from '../components/Stats/AccountableTime';
+import DailyProgress from '../components/Stats/DailyProgress';
 
 const Account = () => {
   return (
     <ScrollView style={styles.container}>
       <Divider style={styles.topBar} />
       <AccountableTime />
+      <DailyProgress />
       <BuyMeACoffee />
       <ReportBug />
     </ScrollView>
