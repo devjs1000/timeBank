@@ -31,7 +31,9 @@ const DailyProgress = () => {
   const width = Dimensions.get('window').width * Math.ceil(values.length / 6);
   return (
     <View>
-      <Text style={styles.heading}>Daily Progress</Text>
+      {labels.length && values.length ? (
+        <Text style={styles.heading}>Daily Progress</Text>
+      ) : null}
       <ScrollView horizontal>
         {labels.length && values.length ? (
           <LineChart
