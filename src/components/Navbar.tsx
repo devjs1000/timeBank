@@ -3,10 +3,9 @@ import {StyleSheet, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import {dark900, secondary} from '../constants/theme';
 import {getSeconds} from '../helpers/time';
+import {totalSecondsInDay} from '../constants/time';
 
 const Navbar = ({left}: NavbarProps) => {
-  const totalSecondsInDay = 60 * 60 * 24;
-
   const [time, setTime] = React.useState(totalSecondsInDay);
 
   useEffect(() => {
