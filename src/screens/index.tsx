@@ -4,14 +4,14 @@ import History from './History';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {color2, dark900, primary, secondary} from '../constants/theme';
+import {color2, dark900, secondary} from '../constants/theme';
 import Navbar from '../components/Navbar';
 import useProcess from '../hooks/useProcess';
-import Settings from './Settings';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ThemeButton from '../components/Buttons/ThemeButton';
 import Account from './Account';
+import Settings from './Settings';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 const Screen = () => {
@@ -55,25 +55,24 @@ const Screen = () => {
             ),
           }}
         />
-        {/* <Tab.Screen
-          name="Setting"
-          component={Settings}
-          options={{
-            tabBarIcon: ({color, size}) => (
-              <Ionicons name="settings" color={color} size={size} />
-            ),
-            header: ({}) => {
-              return <Navbar left={<ThemeButton />} />;
-            },
-          }}
-        /> */}
-
         <Tab.Screen
           name="Account"
           component={Account}
           options={{
             tabBarIcon: ({color, size}) => (
               <MaterialIcons name="account-circle" color={color} size={size} />
+            ),
+            header: ({}) => {
+              return <Navbar left={<ThemeButton />} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Setting"
+          component={Settings}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <Ionicons name="settings" color={color} size={size} />
             ),
             header: ({}) => {
               return <Navbar left={<ThemeButton />} />;
